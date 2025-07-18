@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:IPlanIt/pages/login_page.dart';
+import 'package:iplanit/pages/login_page.dart';
 import 'pages/dashboard_page.dart';
 import 'pages/task_page.dart';
 import 'pages/notes_page.dart';

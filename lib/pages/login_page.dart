@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:IPlanIt/main.dart';
+import 'package:iplanit/main.dart';
 import 'register_page.dart';
 import 'package:email_validator/email_validator.dart';
 

@@ -52,9 +52,7 @@ class _DashboardPageState extends State<DashboardPage> {
   }
 
   int get totalTasks => tasks.length;
-
   int get completedTasks => tasks.where((task) => task.isCompleted).length;
-
   int get pendingTasks => tasks.where((task) => !task.isCompleted).length;
 
   @override
@@ -110,12 +108,18 @@ class _DashboardPageState extends State<DashboardPage> {
             ),
             const SizedBox(height: 10),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _buildStatCard(
-                    'Tugas Selesai', '$completedTasks', Colors.green),
-                _buildStatCard('Tugas Belum', '$pendingTasks', Colors.red),
-                _buildStatCard('Total Tugas', '$totalTasks', Colors.blue),
+                Expanded(
+                  child: _buildStatCard('Tugas Selesai', '$completedTasks', Colors.green),
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: _buildStatCard('Tugas Belum', '$pendingTasks', Colors.red),
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: _buildStatCard('Total Tugas', '$totalTasks', Colors.blue),
+                ),
               ],
             ),
             const SizedBox(height: 20),
@@ -129,8 +133,7 @@ class _DashboardPageState extends State<DashboardPage> {
               physics: const NeverScrollableScrollPhysics(),
               itemCount: tasks.where((task) => !task.isCompleted).length,
               itemBuilder: (context, index) {
-                var task =
-                    tasks.where((task) => !task.isCompleted).toList()[index];
+                var task = tasks.where((task) => !task.isCompleted).toList()[index];
                 return _buildTaskTile(task.name, task.isCompleted);
               },
             ),
@@ -162,6 +165,7 @@ class _DashboardPageState extends State<DashboardPage> {
           Text(
             title,
             style: TextStyle(fontSize: 14, color: color),
+            textAlign: TextAlign.center,
           ),
         ],
       ),
@@ -185,13 +189,11 @@ class _DashboardPageState extends State<DashboardPage> {
         trailing: isCompleted
             ? const Text(
                 'Selesai',
-                style:
-                    TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
+                style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
               )
             : const Text(
                 'Belum',
-                style:
-                    TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+                style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
               ),
       ),
     );
@@ -202,5 +204,6 @@ void main() {
   runApp(MaterialApp(
     home: DashboardPage(),
     theme: ThemeData(primarySwatch: Colors.blue),
+    debugShowCheckedModeBanner: false,
   ));
 }

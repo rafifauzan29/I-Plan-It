@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:IPlanIt/pages/login_page.dart';
+import 'package:iplanit/pages/login_page.dart';
 import 'package:email_validator/email_validator.dart';
 
 class RegisterPage extends StatefulWidget {
